@@ -20,7 +20,7 @@ R2 = R0 - Q.R1
 
 R2 = md - Q.nd
 
-R2 = d(n - Q.n)
+R2 = d(m - Q.n)
 ```
 
 Therefore R2 is also a multiple of `d`.  `m` and `n` must be co-prime because if they shared a common factor then
@@ -32,7 +32,7 @@ the previous one was the GCF `d`.
 
 # Binary algorithm
 
-The quotient Q is expensive in for binary machines and instead a binary algorithm can be used.  In the
+The quotient Q is expensive for binary machines and instead a binary algorithm can be used.  In the
 binary algorithm, we first remove all common `2`s from the prime factors.  For instance if `a = 2^4 . 3^2 . 5`, and
 `b = 2^3 . 5 . 7` then we remove `2^3` from both numbers.  Eventually we will multiply the 2s back into the GCD.
 
@@ -109,11 +109,19 @@ Sx  ->  Sx/2
 Tx  ->  Tx/2
 ```
 
-This only works if Sx and Tx are both even (they are integers).
+This only works if Sx and Tx are both even (they must remain integers).
 
-Rx is even, and at most one of `a` and `b` are even (we discarded common powers of 2 from `a` and `b`
-before we started these transformations).  So, if `a` is odd then `Sx` is even, and if `b` is odd then
+In the case where they are not both even, we can use a different transformation for `Sx` and `Tx`. We
+know that Rx is even, and at most one of `a` and `b` are even, because we discarded common powers of 2 from `a` and `b`
+before we started these transformations.  So, if `a` is odd then `Sx` is even, and if `b` is odd then
 `Tx` is even.  If `a` and `b` are both odd, then so are `Sx` and `Tx`.
+
+```
+Acceptable combinations when Sx and Tx are not both even:
+Rx(even) = a(odd) . Sx(odd) + b(odd) . Tx(odd)
+Rx(even) = a(odd) . Sx(even) + b(even) . Tx(odd)
+Rx(even) = a(even) . Sx(odd) + b(odd) . Tx(even)
+```
 
 So we use the following transformation when `Sx` and `Tx` are not both even.
 
@@ -133,6 +141,12 @@ a.Sx + b.Tx  ->  a.(Sx + b)/2 + b.(Tx - a)/2
 a.Sx + b.Tx  ->  a.Sx/2 + a.b/2 + b.Tx/2 - b.a/2
 
 a.Sx + b.Tx  ->  a.Sx/2 + b.Tx/2 + (a.b/2 - a.b/2)
+
+a.Sx + b.Tx  ->  a.Sx/2 + b.Tx/2
+
+a.Sx + b.Tx  ->  (a.Sx + b.Tx) / 2
+
+Rn  ->  Rn / 2
 ```
 
 # Complete algorithm
