@@ -10,7 +10,8 @@ the traditional Euclidean algorithm, we reduce the value by performing:
 `Rn = Rn-2 - Q.Rn-1`
 
 where values R are the results of applying the GCD preserving transformation (R0 = a, R1 = b, the initial values). 
-Q is any value, but typically the Euclidean quotient (integer part) of Rn-2 / Rn-1.
+Q is any value, but typically the Euclidean quotient (integer part) of Rn-2 / Rn-1.  This is often written as
+`Rn-2 (mod Rn-1)`.
 
 This can be seen to be true because if `R0 = a = md`, and `R1 = b = nd`, where `d` is the common factor and `m` and `n`
 are co-prime then:
