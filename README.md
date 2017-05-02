@@ -181,3 +181,10 @@ Rn  ->  Rn / 2
 27) T = Tx
 ```
 
+# Performance
+
+Performance is surprisingly good, in my opinion.
+
+It produces the GCD and weights of two random 1024bit numbers in 2.4 seconds.  Much of this seems to be JVM overhead
+as the GCD of 1 and 1 takes 2.28 seconds.
+
