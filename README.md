@@ -170,7 +170,7 @@ Rn  ->  Rn / 2
 15)       Ty -> Ty - Tx
 16)   Else: (Rx is even)
 17)     Rx -> Rx / 2
-18)     If Sx==even AND Sy==even:
+18)     If Sx==even AND Tx==even:
 19)       Sx -> Sx / 2
 20)       Tx -> Tx / 2
 21)     Else:
